@@ -4,7 +4,6 @@ import Link from "next/link"
 import { IoPencil, IoTrashBinOutline } from "react-icons/io5"
 import { useFormStatus } from "react-dom"
 import clsx from "clsx"
-import { deleteContact } from "@/libs/actions"
 
 export const CreateButton = () =>{
     return(
@@ -47,7 +46,7 @@ export const SubmitButton = ({label}: {label:string}) => {
             {label === "label" ? (
                 <span>{pending ? "Saving ..." : "Save"}</span>
             ):(
-                <span>{pending ? "Submiting ..." : "Submit"}</span>
+                <span>{pending ? "Updating ..." : "Update"}</span>
             )}
 
         </button>

@@ -11,20 +11,11 @@ const Search = () => {
 
     const handleSearch = (term: string) =>  {
       console.log(term);
-      const params = new URLSearchParams(searchParams);
-
-      if (term) {
-        params.set("query", term)
-      } else {
-        params.delete("query")
-      }
-     replace(`${pathname}?${params.toString()}`)
-    }
-    
+      
+    } 
   return (
     <div className='relative flex flex-1'>
         <input
-        defaultValue={searchParams.get("query")?.toString()}
         placeholder='Search...'
         className='w-full border border-gray-200 py-2 pl-10 text-sm outline-2 rounded-sm'
         type="text"

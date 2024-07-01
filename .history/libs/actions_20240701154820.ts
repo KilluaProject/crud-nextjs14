@@ -70,10 +70,26 @@ export const updateContact = async (
 
   export const deleteContact = async (
     id: string,
+    prevSate: any,
+    formData: FormData
   ) => {
+    const validatedFields = ContactSchema.safeParse(
+      Object.fromEntries(formData.entries())
+    );
+  
+    if (!validatedFields.success) {
+      return {
+        Error: validatedFields.error.flatten().fieldErrors,
+      };
+    }
   
     try {
-      await prisma.contact.delete({
+      await prisma.contact.update({
+        data: {
+          name: validatedFields.data.name,
+          phone: validatedFields.data.phone,
+          email: validatedFields.data.email,
+        },
         where: { id },
       });
     } catch (error) {
@@ -81,4 +97,5 @@ export const updateContact = async (
     }
   
     revalidatePath("/contacts");
+    redirect("/contacts");
   };

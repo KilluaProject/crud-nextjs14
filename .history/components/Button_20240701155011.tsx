@@ -47,7 +47,7 @@ export const SubmitButton = ({label}: {label:string}) => {
             {label === "label" ? (
                 <span>{pending ? "Saving ..." : "Save"}</span>
             ):(
-                <span>{pending ? "Submiting ..." : "Submit"}</span>
+                <span>{pending ? "Updating ..." : "Update"}</span>
             )}
 
         </button>

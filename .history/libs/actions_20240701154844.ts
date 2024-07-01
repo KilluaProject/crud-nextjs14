@@ -73,7 +73,12 @@ export const updateContact = async (
   ) => {
   
     try {
-      await prisma.contact.delete({
+      await prisma.contact.update({
+        data: {
+          name: validatedFields.data.name,
+          phone: validatedFields.data.phone,
+          email: validatedFields.data.email,
+        },
         where: { id },
       });
     } catch (error) {
@@ -81,4 +86,5 @@ export const updateContact = async (
     }
   
     revalidatePath("/contacts");
+    redirect("/contacts");
   };
